@@ -1,3 +1,4 @@
+import CustomError from '../exceptions/customError';
 import News from '../models/news';
 import { NewsInput } from '../zod-schemas/newsSchema';
 
@@ -13,15 +14,15 @@ const newsServices = {
   },
   getNewById: async (id: string) => {
     const newFound = await News.findById(id);
+
     if (!newFound) {
-      throw new Error('New not found');
+      throw new CustomError('New not found', 404);
     }
+
     return newFound;
   },
   createNews: async (news: NewsInput) => {
-    const newNews = await News.create(news);
-
-    return newNews;
+    await News.create(news);
   },
   updateNewById: async (id: string, newData: NewsInput) => {
     const newFound = await News.findByIdAndUpdate(id, newData, {
@@ -30,15 +31,14 @@ const newsServices = {
     });
 
     if (!newFound) {
-      throw new Error('New not found');
+      throw new CustomError('New not found', 404);
     }
-
-    return newFound;
   },
   deleteNewById: async (id: string) => {
     const newFound = await News.findByIdAndDelete(id);
+
     if (!newFound) {
-      throw new Error('New not found');
+      throw new CustomError('New not found', 404);
     }
   },
 };

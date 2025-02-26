@@ -1,9 +1,9 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import newsServices from '../services/newsServices';
 import { NewsInput } from '../zod-schemas/newsSchema';
 
 const newsController = {
-  getNews: async (req: Request, res: Response) => {
+  getNews: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const isAchieved = req.query.isAchieved === 'true';
       const page = Number(req.query.page) || 1;
@@ -13,28 +13,24 @@ const newsController = {
       res.status(200).json({
         data: news,
       });
-    } catch (error: any) {
-      res.status(500).json({
-        message: error.message,
-      });
+    } catch (error) {
+      next(error);
     }
   },
-  getNewById: async (req: Request, res: Response) => {
+  getNewById: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
 
       const news = await newsServices.getNewById(id);
-      
+
       res.status(200).json({
         data: news,
       });
-    } catch (error: any) {
-      res.status(500).json({
-        message: error.message,
-      });
+    } catch (error) {
+      next(error);
     }
   },
-  createNews: async (req: Request, res: Response) => {
+  createNews: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const newsData = req.body as NewsInput;
 
@@ -43,42 +39,36 @@ const newsController = {
       res.status(201).json({
         message: 'New created successfully',
       });
-    } catch (error: any) {
-      res.status(500).json({
-        message: error.message,
-      });
+    } catch (error) {
+      next(error);
     }
   },
 
-  updateNews: async (req: Request, res: Response) => {
+  updateNews: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
       const newsData = req.body as NewsInput;
 
       await newsServices.updateNewById(id, newsData);
 
-      res.json({
+      res.status(200).json({
         message: 'New updated successfully',
       });
-    } catch (error: any) {
-      res.status(500).json({
-        message: error.message,
-      });
+    } catch (error) {
+      next(error);
     }
   },
 
-  deleteNews: async (req: Request, res: Response) => {
+  deleteNews: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
       await newsServices.deleteNewById(id);
 
-      res.json({
+      res.status(200).json({
         message: 'New deleted successfully',
       });
-    } catch (error: any) {
-      res.status(500).json({
-        message: error.message,
-      });
+    } catch (error) {
+      next(error);
     }
   },
 };

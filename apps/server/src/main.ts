@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
 import connectDB from './config/db';
+import errorHandler from './middlewares/errorHandler';
 
 async function main() {
   const envPath = path.join(
@@ -29,6 +30,8 @@ async function main() {
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use('/api/news', newsRouter);
+
+  app.use(errorHandler);
 
   app.listen(port, host, () => {
     console.log(`[ ready ] http://${host}:${port}`);
