@@ -1,9 +1,11 @@
 import { Router } from 'express';
+import News from '../models/news';
 
 const newsRouter = Router();
 
-newsRouter.get('/', (req, res) => {
-  res.send('todas las news');
+newsRouter.get('/', async (req, res) => {
+  const news = await News.find();
+  res.json(news);
 });
 
 newsRouter.get('/:id', (req, res) => {

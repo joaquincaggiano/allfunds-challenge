@@ -1,20 +1,38 @@
 import express from 'express';
 import cors from 'cors';
-import newsRouter from './routes/news';
+import newsRouter from './routes/newsRouter';
 import dotenv from 'dotenv';
 import path from 'path';
+import bodyParser from 'body-parser';
+import connectDB from './config/db';
 
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+async function main() {
+  const envPath = path.join(
+    process.cwd(),
+    'apps',
+    'server',
+    'src',
+    'config',
+    '.env'
+  );
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+  dotenv.config({ path: envPath });
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+  const host = process.env.HOST ?? 'localhost';
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-app.use('/api/news', newsRouter);
+  await connectDB();
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+
+  app.use('/api/news', newsRouter);
+
+  app.listen(port, host, () => {
+    console.log(`[ ready ] http://${host}:${port}`);
+  });
+}
+
+main();
