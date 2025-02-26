@@ -6,7 +6,7 @@ const newsServices = {
     const options = { archiveDate: isAchieved ? { $ne: null } : null}
 
     const news = await News.find(options)
-      .skip((Number(page) - 1) * 10)
+      .skip((page - 1) * 10)
       .limit(10);
 
     return news;
