@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import News from '../models/news';
 import newsServices from '../services/newsServices';
+import { NewsInput } from '../zod-schemas/newsSchema';
 
 const newsController = {
   getNews: async (req: Request, res: Response) => {
@@ -22,7 +22,9 @@ const newsController = {
   getNewById: async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
+
       const news = await newsServices.getNewById(id);
+      
       res.status(200).json({
         data: news,
       });
@@ -33,25 +35,51 @@ const newsController = {
     }
   },
   createNews: async (req: Request, res: Response) => {
-    const { title, content, author, date } = req.body;
-    const news = await News.create({ title, content, author, date });
-    res.json(news);
+    try {
+      const newsData = req.body as NewsInput;
+
+      await newsServices.createNews(newsData);
+
+      res.status(201).json({
+        message: 'New created successfully',
+      });
+    } catch (error: any) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
   },
+
   updateNews: async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const { title, content, author, date } = req.body;
-    const news = await News.findByIdAndUpdate(id, {
-      title,
-      content,
-      author,
-      date,
-    });
-    res.json(news);
+    try {
+      const { id } = req.params;
+      const newsData = req.body as NewsInput;
+
+      await newsServices.updateNewById(id, newsData);
+
+      res.json({
+        message: 'New updated successfully',
+      });
+    } catch (error: any) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
   },
+
   deleteNews: async (req: Request, res: Response) => {
-    const { id } = req.params;
-    await News.findByIdAndDelete(id);
-    res.json({ message: 'News deleted' });
+    try {
+      const { id } = req.params;
+      await newsServices.deleteNewById(id);
+
+      res.json({
+        message: 'New deleted successfully',
+      });
+    } catch (error: any) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
   },
 };
 

@@ -15,7 +15,7 @@ const newsSchema = new Schema(
     title: { type: String, minlength: 3, maxlength: 50, required: true },
     description: { type: String, minlength: 10, required: true },
     date: { type: Date, required: true },
-    content: { type: String, required: true },
+    content: { type: String, minlength: 10, required: true },
     author: { type: String, required: true },
     archiveDate: { type: Date, default: null },
   },

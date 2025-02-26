@@ -1,5 +1,5 @@
-import { isValidObjectId } from 'mongoose';
-import News, { INews } from '../models/news';
+import News from '../models/news';
+import { NewsInput } from '../zod-schemas/newsSchema';
 
 const newsServices = {
   getNews: async (page: number, isAchieved: boolean) => {
@@ -12,16 +12,34 @@ const newsServices = {
     return news;
   },
   getNewById: async (id: string) => {
-    if (!id || !isValidObjectId(id)) {
-      throw new Error('Invalid new ID');
+    const newFound = await News.findById(id);
+    if (!newFound) {
+      throw new Error('New not found');
+    }
+    return newFound;
+  },
+  createNews: async (news: NewsInput) => {
+    const newNews = await News.create(news);
+
+    return newNews;
+  },
+  updateNewById: async (id: string, newData: NewsInput) => {
+    const newFound = await News.findByIdAndUpdate(id, newData, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!newFound) {
+      throw new Error('New not found');
     }
 
-    const news = await News.findById(id);
-    return news;
+    return newFound;
   },
-  createNews: async (news: INews) => {
-    const newNews = await News.create(news);
-    return newNews;
+  deleteNewById: async (id: string) => {
+    const newFound = await News.findByIdAndDelete(id);
+    if (!newFound) {
+      throw new Error('New not found');
+    }
   },
 };
 
