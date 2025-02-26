@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 
-const envPath = path.join(process.cwd(), 'apps', 'server', 'src', 'config', '.env');
+const envPath = path.join(process.cwd(), 'apps', 'server', 'src', 'config', '.env'); // esta ruta es así porque en tiempo de ejecución, el cwd es el directorio de la carpeta apps/server
 
 dotenv.config({ path: envPath });
 

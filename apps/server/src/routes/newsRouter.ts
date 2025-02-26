@@ -1,27 +1,16 @@
 import { Router } from 'express';
-import News from '../models/news';
+import newsController from '../controllers/newsController';
 
 const newsRouter = Router();
 
-newsRouter.get('/', async (req, res) => {
-  const news = await News.find();
-  res.json(news);
-});
+newsRouter.get('/', newsController.getNews);
 
-newsRouter.get('/:id', (req, res) => {
-  res.send(`news con id ${req.params.id}`);
-});
+newsRouter.get('/:id', newsController.getNewById);
 
-newsRouter.post('/', (req, res) => {
-  res.send('crear news');
-});
+newsRouter.post('/', newsController.createNews);
 
-newsRouter.put('/:id', (req, res) => {
-  res.send(`actualizar news con id ${req.params.id}`);
-});
+newsRouter.put('/:id', newsController.updateNews);
 
-newsRouter.delete('/:id', (req, res) => {
-  res.send(`eliminar news con id ${req.params.id}`);
-});
+newsRouter.delete('/:id', newsController.deleteNews);
 
 export default newsRouter;

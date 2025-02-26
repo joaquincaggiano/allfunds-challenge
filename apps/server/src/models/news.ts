@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 // title, description, date, content, author, archiveDate.
-interface INews extends Document {
+export interface INews extends Document {
   title: string;
   description: string;
   date: Date;
