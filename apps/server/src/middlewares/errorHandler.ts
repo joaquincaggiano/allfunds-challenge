@@ -7,9 +7,8 @@ const errorHandler = (
   res: Response,
   next: NextFunction // no se usa porque es un middleware de error
 ) => {
-  console.error(err.stack); // Log del error
+  console.error(err.stack);
 
-  // Respuesta al cliente
   res.status(err.statusCode || 500).json({
     success: false,
     message: err.message || 'Error interno del servidor',

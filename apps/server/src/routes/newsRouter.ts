@@ -6,13 +6,11 @@ import { validateRequest } from '../middlewares/validateRequest';
 
 const newsRouter = Router();
 
-// Schema combinado para actualización
 const updateSchema = z.object({
   params: paramsSchema,
   body: newsSchema,
 });
 
-// Schema para eliminación
 const idSchema = z.object({
   params: paramsSchema,
 });
