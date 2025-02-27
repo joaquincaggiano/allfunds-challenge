@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { FileText, Archive } from 'lucide-react';
 
 interface TabNavigationProps {
@@ -8,14 +8,14 @@ interface TabNavigationProps {
   title2: string;
 }
 
-const TabNavigation: React.FC<TabNavigationProps> = ({
+const TabNavigation: FC<TabNavigationProps> = ({
   showArchived,
   setShowArchived,
   title1,
   title2,
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden mb-10 max-w-3xl mx-auto">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden mb-10 w-full max-w-3xl mx-auto">
       <div className="flex">
         <button
           onClick={() => setShowArchived(false)}

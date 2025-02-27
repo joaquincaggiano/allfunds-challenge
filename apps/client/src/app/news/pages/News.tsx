@@ -16,8 +16,8 @@ export const News = () => {
       <TabNavigation
         showArchived={isAchieved}
         setShowArchived={setIsAchieved}
-        title1="Activos"
-        title2="Archivados"
+        title1="Actives"
+        title2="Archived"
       />
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

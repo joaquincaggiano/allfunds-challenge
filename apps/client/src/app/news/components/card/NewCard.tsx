@@ -1,17 +1,14 @@
-import { Calendar, User, ArrowRight, Archive } from 'lucide-react';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { New } from '../../interfaces/new.interface';
+import { Calendar, User, ArrowRight, Archive } from 'lucide-react';
+import { formattedDate } from '../../../../utils/formattedDate';
 
 interface CardProps {
   newData: New;
 }
 
-const NewCard: React.FC<CardProps> = ({ newData }) => {
-  const formattedDate = new Date(newData.date).toLocaleDateString('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
+const NewCard: FC<CardProps> = ({ newData }) => {
   return (
     <article className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px] border border-gray-100">
       <div className="p-6 flex flex-col justify-between h-full">
@@ -64,19 +61,19 @@ const NewCard: React.FC<CardProps> = ({ newData }) => {
               >
                 <Calendar size={14} className="text-indigo-600" />
               </div>
-              <span className="font-medium">{formattedDate}</span>
+              <span className="font-medium">{formattedDate(newData.date)}</span>
             </li>
           </ul>
         </div>
 
         {/* Botón de acción */}
-        <button
-          // onClick={() => onViewDetail(post.id)}
+        <Link
+          to={`/news/${newData._id}`}
           className="w-fit flex items-center text-white bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 shadow-sm"
         >
-          Ver detalle
+          Read more
           <ArrowRight size={16} className="ml-2" />
-        </button>
+        </Link>
       </div>
     </article>
   );
