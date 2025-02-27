@@ -1,5 +1,5 @@
 import { Calendar, User, ArrowRight, Archive } from 'lucide-react';
-import { New } from '../interfaces/new.interface';
+import { New } from '../../interfaces/new.interface';
 
 interface CardProps {
   newData: New;
