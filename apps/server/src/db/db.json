@@ -1,90 +1,92 @@
-[
-  {
-    "title": "Politics especially sister.",
-    "description": "Sing choice financial build sea. Meet moment find economy resource drop country. Many federal in east already.",
-    "date": "2025-01-23",
-    "content": "Property herself behind along wonder.\nI practice relate Republican item high find. Poor cover everything yourself child beyond. Soldier close discuss day.",
-    "author": "John Gonzalez",
-    "archiveDate": null
-  },
-  {
-    "title": "Pattern loss enter.",
-    "description": "Explain director buy face suffer. Yourself fly sea then policy.",
-    "date": "2025-02-06",
-    "content": "Gun option follow hotel above do admit. Speak measure start it may to.",
-    "author": "Krystal Meyer",
-    "archiveDate": "2025-01-07"
-  },
-  {
-    "title": "Consider outside be tax body.",
-    "description": "Language lead produce medical street. Return north meeting natural alone across get during. After total really college their.",
-    "date": "2025-02-24",
-    "content": "Admit law sound can. Thus seven kind member try much do.\nCarry up get. Return game home little down company say. Middle million couple example many.",
-    "author": "Hannah Cabrera",
-    "archiveDate": "2025-02-11"
-  },
-  {
-    "title": "Remember with nation carry.",
-    "description": "Dream position among accept very trip. Laugh fast improve apply fall. Stage practice find usually.",
-    "date": "2025-01-24",
-    "content": "Huge get face rock which road end. Seven yard between draw station note push. Either street see with remain student might.",
-    "author": "Brandon Brown",
-    "archiveDate": "2025-01-16"
-  },
-  {
-    "title": "Play everybody early call.",
-    "description": "Compare beautiful yourself over pick deal success population. Difficult color radio buy evidence star. History final foot present.",
-    "date": "2025-01-08",
-    "content": "Deal deal husband. Feel happen everyone officer foreign. International cause police force director.\nMoney with minute reason contain. Tho safe say score explain head.",
-    "author": "Melissa Reese",
-    "archiveDate": null
-  },
-  {
-    "title": "Certainly meet family assume.",
-    "description": "Employee main bar. Will start catch alone assume think. Support shoulder report prove.",
-    "date": "2025-02-02",
-    "content": "Movement realize number continue. Possible spend worry your. Call time use catch government face.",
-    "author": "James Sullivan",
-    "archiveDate": "2025-01-12"
-  },
-  {
-    "title": "Final relate little.",
-    "description": "Prove song show factor under. Share next improve their. Growth step task job.",
-    "date": "2025-02-10",
-    "content": "Rest voice space set itself protect join. Save notice keep various policy feel.",
-    "author": "Lori Cooper",
-    "archiveDate": "2025-01-20"
-  },
-  {
-    "title": "Fly level available.",
-    "description": "Know play expect black common. Order next mission cause. Huge office maybe word.",
-    "date": "2025-02-16",
-    "content": "Allow rich foreign physical director worry can.\nAlways year husband in write environment. Care as half feeling interesting interesting mean give.",
-    "author": "Tristan Weeks",
-    "archiveDate": null
-  },
-  {
-    "title": "Certainly of deal.",
-    "description": "Dinner activity fine level most there analysis. Area who first road. Else with prove interview.",
-    "date": "2025-02-01",
-    "content": "Word this loss public theory explain wear. Mr television indeed would treatment nor soon. Ten purpose again education this or thought.\nContinue catch so consider wish.",
-    "author": "Brian Molina",
-    "archiveDate": null
-  },
-  {
-    "title": "General wear simply provide eight.",
-    "description": "Administration pattern show fall. Understand enter agency.",
-    "date": "2025-01-31",
-    "content": "Rather page share become. Voice experience card guy term.\nMust difficult kind red goal. Fill current often painting player. Look all bit pass camera find herself according.",
-    "author": "Ryan Roberson",
-    "archiveDate": null
-  },
-  {
-    "title": "Himself name candidate might age one.",
-    "description": "Here energy gas magazine. Rise send site significant smile speak.",
-    "date": "2025-02-14",
-    "content": "Game ground prove call set. Away question off team itself some will.\nBank seek party cause. Less growth store anything start able.",
-    "author": "Marc Lewis",
-    "archiveDate": "2025-01-09"
-  }
-]
+{
+  "news": [
+    {
+      "title": "Politics especially sister.",
+      "description": "Sing choice financial build sea. Meet moment find economy resource drop country. Many federal in east already.",
+      "date": "2025-01-23",
+      "content": "Property herself behind along wonder.\nI practice relate Republican item high find. Poor cover everything yourself child beyond. Soldier close discuss day.",
+      "author": "John Gonzalez",
+      "archiveDate": null
+    },
+    {
+      "title": "Pattern loss enter.",
+      "description": "Explain director buy face suffer. Yourself fly sea then policy.",
+      "date": "2025-02-06",
+      "content": "Gun option follow hotel above do admit. Speak measure start it may to.",
+      "author": "Krystal Meyer",
+      "archiveDate": "2025-01-07"
+    },
+    {
+      "title": "Consider outside be tax body.",
+      "description": "Language lead produce medical street. Return north meeting natural alone across get during. After total really college their.",
+      "date": "2025-02-24",
+      "content": "Admit law sound can. Thus seven kind member try much do.\nCarry up get. Return game home little down company say. Middle million couple example many.",
+      "author": "Hannah Cabrera",
+      "archiveDate": "2025-02-11"
+    },
+    {
+      "title": "Remember with nation carry.",
+      "description": "Dream position among accept very trip. Laugh fast improve apply fall. Stage practice find usually.",
+      "date": "2025-01-24",
+      "content": "Huge get face rock which road end. Seven yard between draw station note push. Either street see with remain student might.",
+      "author": "Brandon Brown",
+      "archiveDate": "2025-01-16"
+    },
+    {
+      "title": "Play everybody early call.",
+      "description": "Compare beautiful yourself over pick deal success population. Difficult color radio buy evidence star. History final foot present.",
+      "date": "2025-01-08",
+      "content": "Deal deal husband. Feel happen everyone officer foreign. International cause police force director.\nMoney with minute reason contain. Tho safe say score explain head.",
+      "author": "Melissa Reese",
+      "archiveDate": null
+    },
+    {
+      "title": "Certainly meet family assume.",
+      "description": "Employee main bar. Will start catch alone assume think. Support shoulder report prove.",
+      "date": "2025-02-02",
+      "content": "Movement realize number continue. Possible spend worry your. Call time use catch government face.",
+      "author": "James Sullivan",
+      "archiveDate": "2025-01-12"
+    },
+    {
+      "title": "Final relate little.",
+      "description": "Prove song show factor under. Share next improve their. Growth step task job.",
+      "date": "2025-02-10",
+      "content": "Rest voice space set itself protect join. Save notice keep various policy feel.",
+      "author": "Lori Cooper",
+      "archiveDate": "2025-01-20"
+    },
+    {
+      "title": "Fly level available.",
+      "description": "Know play expect black common. Order next mission cause. Huge office maybe word.",
+      "date": "2025-02-16",
+      "content": "Allow rich foreign physical director worry can.\nAlways year husband in write environment. Care as half feeling interesting interesting mean give.",
+      "author": "Tristan Weeks",
+      "archiveDate": null
+    },
+    {
+      "title": "Certainly of deal.",
+      "description": "Dinner activity fine level most there analysis. Area who first road. Else with prove interview.",
+      "date": "2025-02-01",
+      "content": "Word this loss public theory explain wear. Mr television indeed would treatment nor soon. Ten purpose again education this or thought.\nContinue catch so consider wish.",
+      "author": "Brian Molina",
+      "archiveDate": null
+    },
+    {
+      "title": "General wear simply provide eight.",
+      "description": "Administration pattern show fall. Understand enter agency.",
+      "date": "2025-01-31",
+      "content": "Rather page share become. Voice experience card guy term.\nMust difficult kind red goal. Fill current often painting player. Look all bit pass camera find herself according.",
+      "author": "Ryan Roberson",
+      "archiveDate": null
+    },
+    {
+      "title": "Himself name candidate might age one.",
+      "description": "Here energy gas magazine. Rise send site significant smile speak.",
+      "date": "2025-02-14",
+      "content": "Game ground prove call set. Away question off team itself some will.\nBank seek party cause. Less growth store anything start able.",
+      "author": "Marc Lewis",
+      "archiveDate": "2025-01-09"
+    }
+  ]
+}

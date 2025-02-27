@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:client": "nx run client:serve",
-    "start:server": "nx run server:serve"
+    "start:server": "nx run server:serve",
+    "seed": "nx build server && node dist/apps/server/src/db/seed.js"
   },
   "private": true,
   "dependencies": {
