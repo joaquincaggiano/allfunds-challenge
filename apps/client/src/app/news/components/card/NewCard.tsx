@@ -3,14 +3,20 @@ import { Link } from 'react-router-dom';
 import { New } from '../../interfaces/new.interface';
 import { Calendar, User, ArrowRight, Archive } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
+import { usePrefetchNew } from '../../hooks/usePrefetchNew';
 
 interface CardProps {
   newData: New;
 }
 
 const NewCard: FC<CardProps> = ({ newData }) => {
+  const { prefetchNew } = usePrefetchNew();
+
   return (
-    <article className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px] border border-gray-100">
+    <article
+      onMouseEnter={() => prefetchNew(newData._id)}
+      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px] border border-gray-100"
+    >
       <div className="p-6 flex flex-col justify-between h-full">
         <div>
           {/* Encabezado de la tarjeta */}
