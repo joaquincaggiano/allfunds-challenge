@@ -4,7 +4,7 @@ import newsRouter from './routes/newsRouter';
 import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
-import connectDB from './config/db';
+import connectDB from './db/db';
 import errorHandler from './middlewares/errorHandler';
 
 async function main() {
