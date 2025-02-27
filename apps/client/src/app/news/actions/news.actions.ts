@@ -1,5 +1,5 @@
 import { newsApi } from '../api/newsApi';
-import { New, NewsResponse } from '../interfaces/new.interface';
+import { New, NewResponse, NewsResponse } from '../interfaces/new.interface';
 
 interface GetNewsOptions {
   filterKey?: boolean;
@@ -16,7 +16,7 @@ export const getNews = async ({
 };
 
 export const getNewById = async (id: string): Promise<New> => {
-  const { data } = await newsApi.get<New>(`/news/${id}`);
+  const { data } = await newsApi.get<NewResponse>(`/news/${id}`);
 
-  return data;
+  return data.data;
 };

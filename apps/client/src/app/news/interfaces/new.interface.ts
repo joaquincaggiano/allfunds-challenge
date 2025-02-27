@@ -12,3 +12,6 @@ export interface NewsResponse {
   data: New[];
 }
 
+export interface NewResponse {
+  data: New;
+}

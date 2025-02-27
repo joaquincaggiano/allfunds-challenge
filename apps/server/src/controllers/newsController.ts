@@ -21,10 +21,10 @@ const newsController = {
     try {
       const { id } = req.params;
 
-      const news = await newsServices.getNewById(id);
+      const newFound = await newsServices.getNewById(id);
 
       res.status(200).json({
-        data: news,
+        data: newFound,
       });
     } catch (error) {
       next(error);
