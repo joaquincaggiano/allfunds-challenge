@@ -68,7 +68,7 @@ const NewCard: FC<CardProps> = ({ newData }) => {
 
             {newData.archiveDate ? (
               <Li
-                icon={<Archive size={18} className="text-green-600" />}
+                icon={<Archive size={14} className="text-green-600" />}
                 backgroundColor="bg-green-100"
                 children={formattedDate(newData.archiveDate)}
               />
