@@ -23,7 +23,7 @@ const NewCard: FC<CardProps> = ({ newData }) => {
         <div className="p-6 flex flex-col justify-between h-full">
           <div>
             {/* Encabezado de la tarjeta */}
-            <header className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4">
               {/* Línea decorativa */}
               <div
                 className="h-1 w-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"
@@ -50,7 +50,7 @@ const NewCard: FC<CardProps> = ({ newData }) => {
                   <Archive size={18} />
                 </button>
               )}
-            </header>
+            </div>
 
             {/* Contenido principal */}
             <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2">
