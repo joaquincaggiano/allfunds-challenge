@@ -1,17 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { New } from '../../interfaces/new.interface';
-import {
-  Calendar,
-  User,
-  ArrowRight,
-  Archive,
-  Trash,
-} from 'lucide-react';
+import { Calendar, User, ArrowRight, Archive, Trash } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
 import { usePrefetchNew } from '../../hooks/usePrefetchNew';
 import { useNew } from '../../hooks/useNew';
 import { ButtonIcon } from '../ui/ButtonIcon';
+import { Li } from '../ui/Li';
 
 interface CardProps {
   newData: New;
@@ -65,24 +60,25 @@ const NewCard: FC<CardProps> = ({ newData }) => {
 
           {/* Metadatos (autor y fecha) */}
           <ul className="flex items-center text-gray-500 text-sm mb-5 space-x-4">
-            <li className="flex items-center">
-              <div
-                className="bg-blue-100 p-1.5 rounded-full mr-2"
-                aria-hidden="true"
-              >
-                <User size={14} className="text-blue-600" />
-              </div>
-              <span className="font-medium">{newData.author}</span>
-            </li>
-            <li className="flex items-center">
-              <div
-                className="bg-indigo-100 p-1.5 rounded-full mr-2"
-                aria-hidden="true"
-              >
-                <Calendar size={14} className="text-indigo-600" />
-              </div>
-              <span className="font-medium">{formattedDate(newData.date)}</span>
-            </li>
+            <Li
+              icon={<User size={14} className="text-blue-600" />}
+              backgroundColor="bg-blue-100"
+              children={newData.author}
+            />
+
+            {newData.archiveDate ? (
+              <Li
+                icon={<Archive size={18} className="text-green-600" />}
+                backgroundColor="bg-green-100"
+                children={formattedDate(newData.archiveDate)}
+              />
+            ) : (
+              <Li
+                icon={<Calendar size={14} className="text-indigo-600" />}
+                backgroundColor="bg-indigo-100"
+                children={formattedDate(newData.date)}
+              />
+            )}
           </ul>
         </div>
 
