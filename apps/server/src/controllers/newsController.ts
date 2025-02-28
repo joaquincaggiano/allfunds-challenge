@@ -34,9 +34,10 @@ const newsController = {
     try {
       const newsData = req.body as NewsInput;
 
-      await newsServices.createNews(newsData);
+      const newCreated = await newsServices.createNews(newsData);
 
       res.status(201).json({
+        data: newCreated,
         message: 'New created successfully',
       });
     } catch (error) {
@@ -49,9 +50,10 @@ const newsController = {
       const { id } = req.params;
       const newsData = req.body as NewsInput;
 
-      await newsServices.updateNewById(id, newsData);
+      const newUpdated = await newsServices.updateNewById(id, newsData);
 
       res.status(200).json({
+        data: newUpdated,
         message: 'New updated successfully',
       });
     } catch (error) {
@@ -65,9 +67,10 @@ const newsController = {
 
       const { isArchived } = req.body;
 
-      await newsServices.updateNewArchiveDate(id, isArchived);
+      const newUpdated = await newsServices.updateNewArchiveDate(id, isArchived);
 
       res.status(200).json({
+        data: newUpdated,
         message: 'New archive date updated successfully',
       });
     } catch (error) {

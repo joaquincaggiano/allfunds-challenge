@@ -22,7 +22,9 @@ const newsServices = {
     return newFound;
   },
   createNews: async (news: NewsInput) => {
-    await News.create(news);
+    const newCreated = await News.create(news);
+
+    return newCreated;
   },
   updateNewById: async (id: string, newData: NewsInput) => {
     const newFound = await News.findByIdAndUpdate(id, newData, {
@@ -33,6 +35,8 @@ const newsServices = {
     if (!newFound) {
       throw new CustomError('New not found', 404);
     }
+
+    return newFound;
   },
   updateNewArchiveDate: async (id: string, isArchived: boolean) => {
     const options = { archiveDate: isArchived ? new Date() : null }
@@ -45,6 +49,8 @@ const newsServices = {
     if (!newFound) {
       throw new CustomError('New not found', 404);
     }
+
+    return newFound;
   },
   deleteNewById: async (id: string) => {
     const newFound = await News.findByIdAndDelete(id);
