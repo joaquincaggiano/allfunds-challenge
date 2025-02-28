@@ -6,7 +6,7 @@ import {
   User,
   ArrowRight,
   Archive,
-  ArchiveRestore,
+  Trash,
 } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
 import { usePrefetchNew } from '../../hooks/usePrefetchNew';
@@ -19,7 +19,9 @@ interface CardProps {
 
 const NewCard: FC<CardProps> = ({ newData }) => {
   const { prefetchNew } = usePrefetchNew();
-  const { useNewUpdateArchiveMutation } = useNew({ id: newData._id });
+  const { useNewUpdateArchiveMutation, useNewDeleteMutation } = useNew({
+    id: newData._id,
+  });
 
   return (
     <article
@@ -36,12 +38,13 @@ const NewCard: FC<CardProps> = ({ newData }) => {
               aria-hidden="true"
             ></div>
 
-            {/* Botón de archivar o desarchivar */}
+            {/* Botón de archivar o borrar articulo */}
             {newData.archiveDate ? (
               <ButtonIcon
-                onClick={() => useNewUpdateArchiveMutation.mutate(false)}
-                icon={<ArchiveRestore size={18} />}
-                title="Desarchivar artículo"
+                onClick={() => useNewDeleteMutation.mutate()}
+                icon={<Trash size={18} />}
+                title="Borrar artículo"
+                className="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-50"
               />
             ) : (
               <ButtonIcon

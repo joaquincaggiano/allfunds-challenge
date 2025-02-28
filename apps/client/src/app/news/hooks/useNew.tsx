@@ -1,5 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getNewById, updateNewArchiveDate } from '../actions/news.actions';
+import {
+  deleteNew,
+  getNewById,
+  updateNewArchiveDate,
+} from '../actions/news.actions';
 import { toast } from 'react-toastify';
 
 interface Options {
@@ -7,7 +11,6 @@ interface Options {
 }
 
 export const useNew = ({ id }: Options) => {
-
   const queryClient = useQueryClient();
 
   const useNewQuery = useQuery({
@@ -29,5 +32,15 @@ export const useNew = ({ id }: Options) => {
     },
   });
 
-  return { useNewQuery, useNewUpdateArchiveMutation };
+  const useNewDeleteMutation = useMutation({
+    mutationFn: () => deleteNew(id),
+    onSuccess: (dataResponse) => {
+      queryClient.invalidateQueries({ queryKey: ['news'] });
+      toast.success(dataResponse.message);
+    },
+    onError: (error) => {
+      toast.error(`Error: ${error.message}`);
+    },
+  });
+  return { useNewQuery, useNewUpdateArchiveMutation, useNewDeleteMutation };
 };

@@ -62,13 +62,20 @@ const newsController = {
     }
   },
 
-  updateNewArchiveDate: async (req: Request, res: Response, next: NextFunction) => {
+  updateNewArchiveDate: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const { id } = req.params;
 
       const { isArchived } = req.body;
 
-      const newUpdated = await newsServices.updateNewArchiveDate(id, isArchived);
+      const newUpdated = await newsServices.updateNewArchiveDate(
+        id,
+        isArchived
+      );
 
       res.status(200).json({
         data: newUpdated,
@@ -78,12 +85,14 @@ const newsController = {
       next(error);
     }
   },
+
   deleteNew: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      await newsServices.deleteNewById(id);
+      const newDeleted = await newsServices.deleteNewById(id);
 
       res.status(200).json({
+        data: newDeleted,
         message: 'New deleted successfully',
       });
     } catch (error) {
