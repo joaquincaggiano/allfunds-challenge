@@ -5,10 +5,11 @@ import { NewsInput } from '../zod-schemas/newsSchema';
 const newsServices = {
   getNews: async (page: number, isAchieved: boolean) => {
     const options = { archiveDate: isAchieved ? { $ne: null } : null}
-    const ITEMS_PER_PAGE = 3;
+    const ITEMS_PER_PAGE = 6;
 
     const [news, total] = await Promise.all([
       News.find(options)
+        .sort({ createdAt: -1 })
         .skip((page - 1) * ITEMS_PER_PAGE)
         .limit(ITEMS_PER_PAGE),
       News.countDocuments(options)
