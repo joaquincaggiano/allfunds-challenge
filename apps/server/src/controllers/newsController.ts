@@ -8,10 +8,11 @@ const newsController = {
       const isAchieved = req.query.isAchieved === 'true';
       const page = Number(req.query.page) || 1;
 
-      const news = await newsServices.getNews(page, isAchieved);
+      const { news, totalPages } = await newsServices.getNews(page, isAchieved);
 
       res.status(200).json({
-        data: news,
+        news,
+        totalPages,
       });
     } catch (error) {
       next(error);

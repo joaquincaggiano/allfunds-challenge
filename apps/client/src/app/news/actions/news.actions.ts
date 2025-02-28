@@ -2,17 +2,24 @@ import { newsApi } from '../api/newsApi';
 import { New, NewResponse, NewsResponse } from '../interfaces/new.interface';
 
 interface GetNewsOptions {
+  page: number;
   filterKey?: boolean;
 }
 
 export const getNews = async ({
+  page = 1,
   filterKey = false,
-}: GetNewsOptions): Promise<New[]> => {
+}: GetNewsOptions): Promise<NewsResponse> => {
   const filterUrl = filterKey ? `isAchieved=${filterKey}` : '';
 
-  const response = await newsApi.get<NewsResponse>(`/news?${filterUrl}`);
+  const response = await newsApi.get<NewsResponse>(
+    `/news?page=${page}${filterUrl !== '' ? `&${filterUrl}` : ''}`
+  );
 
-  return response.data.data;
+  return {
+    news: response.data.news,
+    totalPages: response.data.totalPages,
+  };
 };
 
 export const getNewById = async (id: string): Promise<New> => {
@@ -26,10 +33,9 @@ export const updateNewArchiveDate = async (
   isArchived: boolean
 ): Promise<NewResponse> => {
   console.log('isArchived:', isArchived);
-  const { data } = await newsApi.patch<NewResponse>(
-    `/news/${id}/archive`,
-    { isArchived }
-  );
+  const { data } = await newsApi.patch<NewResponse>(`/news/${id}/archive`, {
+    isArchived,
+  });
 
   return {
     data: data.data,

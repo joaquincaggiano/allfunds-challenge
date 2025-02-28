@@ -5,12 +5,21 @@ import { NewsInput } from '../zod-schemas/newsSchema';
 const newsServices = {
   getNews: async (page: number, isAchieved: boolean) => {
     const options = { archiveDate: isAchieved ? { $ne: null } : null}
+    const ITEMS_PER_PAGE = 3;
 
-    const news = await News.find(options)
-      .skip((page - 1) * 10)
-      .limit(10);
+    const [news, total] = await Promise.all([
+      News.find(options)
+        .skip((page - 1) * ITEMS_PER_PAGE)
+        .limit(ITEMS_PER_PAGE),
+      News.countDocuments(options)
+    ]);
 
-    return news;
+    const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+
+    return {
+      news,
+      totalPages,
+    };
   },
   getNewById: async (id: string) => {
     const newFound = await News.findById(id);

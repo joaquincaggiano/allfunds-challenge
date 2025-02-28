@@ -9,7 +9,8 @@ export interface New {
 }
 
 export interface NewsResponse {
-  data: New[];
+  news: New[];
+  totalPages: number;
 }
 
 export interface NewResponse {
