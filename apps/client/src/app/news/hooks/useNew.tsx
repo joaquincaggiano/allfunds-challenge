@@ -25,7 +25,7 @@ export const useNew = ({ id }: Options) => {
       queryClient.setQueryData(['news', id], dataResponse.data);
       queryClient.invalidateQueries({ queryKey: ['news'] });
       // queryClient.refetchQueries({ queryKey: ['news'] });
-      toast.success(dataResponse.message);
+      // toast.success(dataResponse.message);
     },
     onError: (error) => {
       toast.error(`Error: ${error.message}`);
@@ -34,9 +34,9 @@ export const useNew = ({ id }: Options) => {
 
   const useNewDeleteMutation = useMutation({
     mutationFn: () => deleteNew(id),
-    onSuccess: (dataResponse) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['news'] });
-      toast.success(dataResponse.message);
+      // toast.success(dataResponse.message);
     },
     onError: (error) => {
       toast.error(`Error: ${error.message}`);
