@@ -8,7 +8,7 @@ export const Header = () => {
             <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
               <BookOpen size={28} className="text-white" />
             </div>
-            <h1 className="text-3xl font-bold ml-3 tracking-tight">All Funds - Blog</h1>
+            <h1 className="text-3xl font-bold ml-3 tracking-tight">AllFunds - Blog</h1>
           </div>
         </div>
       </header>
