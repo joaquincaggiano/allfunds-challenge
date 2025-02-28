@@ -43,14 +43,14 @@ const NewCard: FC<CardProps> = ({ newData }) => {
               <ButtonIcon
                 onClick={() => useNewDeleteMutation.mutate()}
                 icon={<Trash size={18} />}
-                title="Borrar artículo"
+                title="Delete blog"
                 className="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-50"
               />
             ) : (
               <ButtonIcon
                 onClick={() => useNewUpdateArchiveMutation.mutate(true)}
                 icon={<Archive size={18} />}
-                title="Archivar artículo"
+                title="Archive blog"
               />
             )}
           </div>
