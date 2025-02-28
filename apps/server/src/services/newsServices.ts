@@ -34,6 +34,18 @@ const newsServices = {
       throw new CustomError('New not found', 404);
     }
   },
+  updateNewArchiveDate: async (id: string, isArchived: boolean) => {
+    const options = { archiveDate: isArchived ? new Date() : null }
+
+    const newFound = await News.findByIdAndUpdate(id, options, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!newFound) {
+      throw new CustomError('New not found', 404);
+    }
+  },
   deleteNewById: async (id: string) => {
     const newFound = await News.findByIdAndDelete(id);
 

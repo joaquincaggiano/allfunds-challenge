@@ -29,6 +29,10 @@ export const newsSchema = z.object({
   archiveDate: z.string().datetime().optional(),
 });
 
+export const archiveSchema = z.object({
+  isArchived: z.boolean(),
+});
+
 // Schema para parámetros de ID
 export const paramsSchema = z.object({
   id: objectIdSchema,

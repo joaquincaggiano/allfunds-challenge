@@ -30,7 +30,7 @@ const newsController = {
       next(error);
     }
   },
-  createNews: async (req: Request, res: Response, next: NextFunction) => {
+  createNew: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const newsData = req.body as NewsInput;
 
@@ -44,7 +44,7 @@ const newsController = {
     }
   },
 
-  updateNews: async (req: Request, res: Response, next: NextFunction) => {
+  updateNew: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
       const newsData = req.body as NewsInput;
@@ -59,7 +59,22 @@ const newsController = {
     }
   },
 
-  deleteNews: async (req: Request, res: Response, next: NextFunction) => {
+  updateNewArchiveDate: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+
+      const { isArchived } = req.body;
+
+      await newsServices.updateNewArchiveDate(id, isArchived);
+
+      res.status(200).json({
+        message: 'New archive date updated successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+  deleteNew: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
       await newsServices.deleteNewById(id);

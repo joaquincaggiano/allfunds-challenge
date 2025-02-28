@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import newsController from '../controllers/newsController';
 import { z } from 'zod';
-import { newsSchema, paramsSchema } from '../zod-schemas/newsSchema';
+import { archiveSchema, newsSchema, paramsSchema } from '../zod-schemas/newsSchema';
 import { validateRequest } from '../middlewares/validateRequest';
 
 const newsRouter = Router();
@@ -19,15 +19,22 @@ newsRouter.get('/', newsController.getNews);
 
 newsRouter.get('/:id', validateRequest(idSchema), newsController.getNewById);
 
-newsRouter.post('/', validateRequest(newsSchema), newsController.createNews);
+newsRouter.post('/', validateRequest(newsSchema), newsController.createNew);
 
 newsRouter.put(
   '/:id',
   validateRequest(idSchema),
   validateRequest(updateSchema),
-  newsController.updateNews
+  newsController.updateNew
 );
 
-newsRouter.delete('/:id', validateRequest(idSchema), newsController.deleteNews);
+newsRouter.patch(
+  '/:id/archive',
+  validateRequest(idSchema),
+  validateRequest(archiveSchema),
+  newsController.updateNewArchiveDate
+);
+
+newsRouter.delete('/:id', validateRequest(idSchema), newsController.deleteNew);
 
 export default newsRouter;
