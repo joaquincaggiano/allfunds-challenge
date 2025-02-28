@@ -20,6 +20,8 @@ export const useNew = ({ id }: Options) => {
     mutationFn: (isArchived: boolean) => updateNewArchiveDate(id, isArchived),
     onSuccess: (dataResponse) => {
       queryClient.setQueryData(['news', id], dataResponse.data);
+      queryClient.invalidateQueries({ queryKey: ['news'] });
+      // queryClient.refetchQueries({ queryKey: ['news'] });
       toast.success(dataResponse.message);
     },
     onError: (error) => {
