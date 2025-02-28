@@ -15,6 +15,11 @@ const idSchema = z.object({
   params: paramsSchema,
 });
 
+const archiveValidationSchema = z.object({
+  params: paramsSchema,
+  body: archiveSchema,
+});
+
 newsRouter.get('/', newsController.getNews);
 
 newsRouter.get('/:id', validateRequest(idSchema), newsController.getNewById);
@@ -30,8 +35,7 @@ newsRouter.put(
 
 newsRouter.patch(
   '/:id/archive',
-  validateRequest(idSchema),
-  validateRequest(archiveSchema),
+  validateRequest(archiveValidationSchema),
   newsController.updateNewArchiveDate
 );
 

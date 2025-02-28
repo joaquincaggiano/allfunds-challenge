@@ -14,4 +14,5 @@ export interface NewsResponse {
 
 export interface NewResponse {
   data: New;
+  message?: string;
 }

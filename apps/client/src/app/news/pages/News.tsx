@@ -3,6 +3,8 @@ import { useNews } from '../hooks/useNews';
 import { Loading } from '../../shared/components/ui/Loading';
 import NewCard from '../components/card/NewCard';
 import TabNavigation from '../components/ui/TabNavigation';
+import { ToastContainer } from 'react-toastify';
+
 
 export const News = () => {
   const [isAchieved, setIsAchieved] = useState(false);
@@ -25,6 +27,8 @@ export const News = () => {
           return <NewCard key={newData._id} newData={newData} />;
         })}
       </section>
+
+      <ToastContainer />
     </>
   );
 };

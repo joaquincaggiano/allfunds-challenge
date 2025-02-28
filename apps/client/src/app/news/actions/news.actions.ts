@@ -20,3 +20,19 @@ export const getNewById = async (id: string): Promise<New> => {
 
   return data.data;
 };
+
+export const updateNewArchiveDate = async (
+  id: string,
+  isArchived: boolean
+): Promise<NewResponse> => {
+  console.log('isArchived:', isArchived);
+  const { data } = await newsApi.patch<NewResponse>(
+    `/news/${id}/archive`,
+    { isArchived }
+  );
+
+  return {
+    data: data.data,
+    message: data.message,
+  };
+};
