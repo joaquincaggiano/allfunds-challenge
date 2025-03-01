@@ -48,16 +48,12 @@ export const useNewMutation = () => {
       queryClient.setQueryData<New[]>(
         ['news', { filterKey: false, page: 1 }],
         (old) => {
-          // Si old no es un array, inicialízalo como un array vacío
           if (!Array.isArray(old)) return [data.data];
           return old.map((newData) =>
             newData._id === context?.optimisticNew._id ? data.data : newData
           );
         }
       );
-
-      // Mostrar un mensaje de éxito
-      toast.success('Artículo creado correctamente');
     },
     onError: (error, _variables, context) => {
       // Revertir la caché al estado anterior en caso de error
@@ -65,9 +61,6 @@ export const useNewMutation = () => {
         ['news', { filterKey: false, page: 1 }],
         context?.previousNews || [] // Si previousNews es undefined, usa un array vacío
       );
-
-      // Mostrar un mensaje de error
-      toast.error(`Error: ${error.message}`);
     },
     onSettled: () => {
       // Invalidar la consulta para asegurarse de que los datos estén actualizados

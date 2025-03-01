@@ -18,10 +18,6 @@ export const News = () => {
   if (useNewsQuery.isLoading || useNewsQuery.isFetching || !useNewsQuery.data)
     return <Loading />;
 
-  // if (useNewsQuery.isError) {
-  //   return <div>Error al cargar las noticias</div>;
-  // }
-
   const news = useNewsQuery.data.news || [];
 
   return (

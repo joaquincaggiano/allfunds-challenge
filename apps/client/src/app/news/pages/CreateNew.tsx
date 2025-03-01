@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { NewsInput, newsSchema } from '../schemas/new-schema';
 import { useNewMutation } from '../hooks/useNewMutation';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 export const CreateNew = () => {
   const { useNewCreateMutation } = useNewMutation();
@@ -31,8 +32,12 @@ export const CreateNew = () => {
     try {
       await useNewCreateMutation.mutateAsync(data); // Espera a que la mutación se complete
       navigate('/'); // Redirige solo después de que la mutación sea exitosa
-    } catch (error) {
-      console.error('Error al crear el artículo:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error('Ocurrió un error inesperado');
+      }
     }
   };
 
@@ -117,6 +122,8 @@ export const CreateNew = () => {
             </button>
           </div>
         </form>
+
+        <ToastContainer />
       </div>
     </div>
   );
