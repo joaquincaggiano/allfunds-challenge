@@ -42,5 +42,10 @@ export const useNew = ({ id }: Options) => {
       toast.error(`Error: ${error.message}`);
     },
   });
-  return { useNewQuery, useNewUpdateArchiveMutation, useNewDeleteMutation };
+
+  return {
+    useNewQuery,
+    useNewUpdateArchiveMutation,
+    useNewDeleteMutation,
+  };
 };

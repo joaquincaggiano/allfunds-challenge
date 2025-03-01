@@ -1,12 +1,12 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { Inputs } from "../../pages/WriteNew";
 import { AlertCircle } from "lucide-react";
+import { NewsInput } from "../../schemas/new-schema";
 
 interface Props {
-  register: UseFormRegister<Inputs>;
-  errors: FieldErrors<Inputs>;
+  register: UseFormRegister<NewsInput>;
+  errors: FieldErrors<NewsInput>;
   label: string;
-  name: keyof Inputs;
+  name: keyof NewsInput;
   placeholder: string;
   type?: string;
 }

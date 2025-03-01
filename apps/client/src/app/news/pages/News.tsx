@@ -10,12 +10,19 @@ import { ButtonLink } from '../components/ui/ButtonLink';
 
 export const News = () => {
   const [isAchieved, setIsAchieved] = useState(false);
+
   const { useNewsQuery, page, nextPage, prevPage } = useNews({
     filterKey: isAchieved,
   });
 
   if (useNewsQuery.isLoading || useNewsQuery.isFetching || !useNewsQuery.data)
     return <Loading />;
+
+  // if (useNewsQuery.isError) {
+  //   return <div>Error al cargar las noticias</div>;
+  // }
+
+  const news = useNewsQuery.data.news || [];
 
   return (
     <div className="flex flex-col">
@@ -33,7 +40,7 @@ export const News = () => {
         title2="Archived"
       />
 
-      {useNewsQuery.data.news.length === 0 ? (
+      {news.length === 0 ? (
         <div className="flex flex-col justify-center items-center py-12">
           <div className="bg-indigo-100 p-3 rounded-full inline-flex mb-4">
             <Archive size={24} className="text-indigo-600" />
@@ -45,14 +52,14 @@ export const News = () => {
       ) : (
         <>
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {useNewsQuery.data.news.map((newData) => {
+            {news.map((newData) => {
               return <NewCard key={newData._id} newData={newData} />;
             })}
           </section>
 
           <Pagination
             page={page}
-            totalPages={useNewsQuery.data.totalPages}
+            totalPages={useNewsQuery.data?.totalPages ?? 0}
             nextPage={nextPage}
             prevPage={prevPage}
           />

@@ -12,6 +12,7 @@ export const Pagination = ({ page, totalPages, nextPage, prevPage }: Props) => {
     <div className="flex items-center justify-center gap-10 mt-12 mb-4">
       <ButtonIcon
         onClick={prevPage}
+        disabled={page === 1}
         icon={<ChevronLeft size={20} />}
         title="Página anterior"
         className={`flex items-center justify-center p-2.5 rounded-lg mr-3 transition-all duration-200 ${
@@ -27,6 +28,7 @@ export const Pagination = ({ page, totalPages, nextPage, prevPage }: Props) => {
         onClick={nextPage}
         icon={<ChevronRight size={20} />}
         title="Página siguiente"
+        disabled={page === totalPages}
         className={`flex items-center justify-center p-2.5 rounded-lg ml-3 transition-all duration-200 ${
           page === totalPages
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'

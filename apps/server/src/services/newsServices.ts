@@ -32,7 +32,7 @@ const newsServices = {
     return newFound;
   },
   createNews: async (news: NewsInput) => {
-    const newCreated = await News.create(news);
+    const newCreated = await News.create({ ...news, archiveDate: null });
 
     return newCreated;
   },

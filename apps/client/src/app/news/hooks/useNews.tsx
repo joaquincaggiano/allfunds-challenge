@@ -19,7 +19,6 @@ export const useNews = ({ filterKey = false }: UseNewsOptions) => {
     setPage(1);
   }, [filterKey]);
 
-
   const nextPage = () => {
     if (useNewsQuery.data?.news.length === 0) return;
 

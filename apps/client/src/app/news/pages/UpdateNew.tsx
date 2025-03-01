@@ -1,25 +1,30 @@
 import { useParams } from 'react-router-dom';
-import { AlertCircle, Save } from 'lucide-react';
+import { Save } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import ButtonBack from '../components/ui/ButtonBack';
 import { Input } from '../components/ui/Input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { newsSchema } from '../schemas/new-schema';
 
 export type Inputs = {
   title: string;
   description: string;
   author: string;
-  date: string;
+  date: Date;
   content: string;
 };
 
-export const WriteNew = () => {
+export const UpdateNew = () => {
   const { id } = useParams();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    resolver: zodResolver(newsSchema),
+    // defaultValues,
+  });
 
   const onSubmit = (data: Inputs) => {};
 

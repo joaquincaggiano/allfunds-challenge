@@ -1,5 +1,6 @@
 import { newsApi } from '../api/newsApi';
 import { New, NewResponse, NewsResponse } from '../interfaces/new.interface';
+import { NewsInput } from '../schemas/new-schema';
 
 interface GetNewsOptions {
   page: number;
@@ -26,6 +27,15 @@ export const getNewById = async (id: string): Promise<New> => {
   const { data } = await newsApi.get<NewResponse>(`/news/${id}`);
 
   return data.data;
+};
+
+export const createNew = async (newData: NewsInput): Promise<NewResponse> => {
+  const { data } = await newsApi.post<NewResponse>('/news/create', newData);
+
+  return {
+    data: data.data,
+    message: data.message,
+  };
 };
 
 export const updateNewArchiveDate = async (

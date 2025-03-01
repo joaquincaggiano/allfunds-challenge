@@ -6,6 +6,12 @@ import { validateRequest } from '../middlewares/validateRequest';
 
 const newsRouter = Router();
 
+const createSchema = z.object({
+  body: newsSchema,
+  query: z.object({}).optional(),
+  params: z.object({}).optional(),
+});
+
 const updateSchema = z.object({
   params: paramsSchema,
   body: newsSchema,
@@ -24,7 +30,7 @@ newsRouter.get('/', newsController.getNews);
 
 newsRouter.get('/:id', validateRequest(idSchema), newsController.getNewById);
 
-newsRouter.post('/', validateRequest(newsSchema), newsController.createNew);
+newsRouter.post('/create', validateRequest(createSchema), newsController.createNew);
 
 newsRouter.put(
   '/:id',

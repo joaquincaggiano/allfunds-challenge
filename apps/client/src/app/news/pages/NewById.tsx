@@ -1,7 +1,7 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useNew } from '../hooks/useNew';
 import { Loading } from '../../shared/components/ui/Loading';
-import { Archive, ArrowLeft, Calendar, User } from 'lucide-react';
+import { Archive, Calendar, User } from 'lucide-react';
 import { formattedDate } from '../../../utils/formattedDate';
 import { Li } from '../components/ui/Li';
 import ButtonBack from '../components/ui/ButtonBack';
