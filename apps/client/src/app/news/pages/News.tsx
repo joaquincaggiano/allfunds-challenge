@@ -5,7 +5,8 @@ import NewCard from '../components/card/NewCard';
 import TabNavigation from '../components/ui/TabNavigation';
 import { ToastContainer } from 'react-toastify';
 import { Pagination } from '../components/pagination/Pagination';
-import { Archive } from 'lucide-react';
+import { Archive, PlusCircle } from 'lucide-react';
+import { ButtonLink } from '../components/ui/ButtonLink';
 
 export const News = () => {
   const [isAchieved, setIsAchieved] = useState(false);
@@ -17,7 +18,14 @@ export const News = () => {
     return <Loading />;
 
   return (
-    <>
+    <div className="flex flex-col">
+      <ButtonLink
+        to="/news/write"
+        icon={<PlusCircle size={18} />}
+        label="Nuevo artículo"
+        className="self-end mb-5"
+      />
+
       <TabNavigation
         showArchived={isAchieved}
         setShowArchived={setIsAchieved}
@@ -52,6 +60,6 @@ export const News = () => {
       )}
 
       <ToastContainer />
-    </>
+    </div>
   );
 };

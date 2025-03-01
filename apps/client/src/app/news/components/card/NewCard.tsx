@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { New } from '../../interfaces/new.interface';
 import { Calendar, User, ArrowRight, Archive, Trash } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
@@ -7,6 +6,7 @@ import { usePrefetchNew } from '../../hooks/usePrefetchNew';
 import { useNew } from '../../hooks/useNew';
 import { ButtonIcon } from '../ui/ButtonIcon';
 import { Li } from '../ui/Li';
+import { ButtonLink } from '../ui/ButtonLink';
 
 interface CardProps {
   newData: New;
@@ -83,13 +83,12 @@ const NewCard: FC<CardProps> = ({ newData }) => {
         </div>
 
         {/* Navegación a la página del artículo */}
-        <Link
+        <ButtonLink
           to={`/news/${newData._id}`}
-          className="w-fit flex items-center text-white bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 shadow-sm"
-        >
-          Read more
-          <ArrowRight size={16} className="ml-2" />
-        </Link>
+          icon={<ArrowRight size={16} />}
+          label="Read more"
+          isIconLeft={false}
+        />
       </div>
     </article>
   );
