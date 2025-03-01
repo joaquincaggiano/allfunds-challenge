@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useNew } from '../hooks/useNew';
 import { Loading } from '../../shared/components/ui/Loading';
-import { Archive, Calendar, User } from 'lucide-react';
+import { Archive, Calendar, PencilLine, User } from 'lucide-react';
 import { formattedDate } from '../../../utils/formattedDate';
 import { Li } from '../components/ui/Li';
 import ButtonBack from '../components/ui/ButtonBack';
+import { ButtonIcon } from '../components/ui/ButtonIcon';
 
 export const NewById = () => {
   const { id } = useParams();
   const { useNewQuery } = useNew({ id: id as string });
+  const navigate = useNavigate();
 
   if (useNewQuery.isLoading || useNewQuery.isFetching || !useNewQuery.data)
     return <Loading />;
@@ -20,8 +22,14 @@ export const NewById = () => {
     <article className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
       <div className="p-8">
         {/* Botón de regreso */}
-        <nav>
+        <nav className="flex justify-between items-center">
           <ButtonBack to="/" />
+
+          <ButtonIcon
+            icon={<PencilLine size={18} className="text-indigo-600" />}
+            title="Edit"
+            onClick={() => navigate(`/news/write/${id}`)}
+          />
         </nav>
 
         {/* Título */}
