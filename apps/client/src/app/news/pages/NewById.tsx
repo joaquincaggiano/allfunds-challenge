@@ -4,6 +4,7 @@ import { Loading } from '../../shared/components/ui/Loading';
 import { Archive, ArrowLeft, Calendar, User } from 'lucide-react';
 import { formattedDate } from '../../../utils/formattedDate';
 import { Li } from '../components/ui/Li';
+import ButtonBack from '../components/ui/ButtonBack';
 
 export const NewById = () => {
   const { id } = useParams();
@@ -20,23 +21,11 @@ export const NewById = () => {
       <div className="p-8">
         {/* Botón de regreso */}
         <nav>
-          <Link
-            to="/"
-            className="flex items-center text-gray-700 font-medium hover:text-blue-600 transition-colors mb-8 group"
-            aria-label="Volver al inicio"
-          >
-            <div className="bg-gray-100 p-2 rounded-full mr-2 group-hover:bg-blue-100 transition-colors">
-              <ArrowLeft
-                size={18}
-                className="group-hover:text-blue-600 transition-colors"
-              />
-            </div>
-            Back
-          </Link>
+          <ButtonBack to="/" />
         </nav>
 
         {/* Título */}
-        <section>
+        <section className="mt-8">
           <div
             className="h-1.5 w-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-6"
             aria-hidden="true"
