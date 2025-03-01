@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { NewsInput } from '../schemas/new-schema';
 import { createNew } from '../actions/news.actions';
-import { New } from '../interfaces/new.interface';
 import mongoose from 'mongoose';
+import { New, NewsInput } from '@allfunds-monorepo-app/shared';
 
 export const useNewMutation = () => {
   const queryClient = useQueryClient();

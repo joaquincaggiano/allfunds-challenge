@@ -1,6 +1,6 @@
+import { NewsInput, NewsResponse } from '@allfunds-monorepo-app/shared';
 import CustomError from '../exceptions/customError';
 import News from '../models/news';
-import { NewsInput } from '../zod-schemas/newsSchema';
 
 const newsServices = {
   getNews: async (page: number, isAchieved: boolean) => {

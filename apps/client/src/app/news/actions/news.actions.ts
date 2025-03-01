@@ -1,6 +1,5 @@
+import { New, NewResponse, NewsInput, NewsResponse } from '@allfunds-monorepo-app/shared';
 import { newsApi } from '../api/newsApi';
-import { New, NewResponse, NewsResponse } from '../interfaces/new.interface';
-import { NewsInput } from '../schemas/new-schema';
 
 interface GetNewsOptions {
   page: number;

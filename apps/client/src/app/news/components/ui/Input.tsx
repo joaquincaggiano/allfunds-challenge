@@ -1,6 +1,6 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
-import { NewsInput } from "../../schemas/new-schema";
+import { NewsInput } from "@allfunds-monorepo-app/shared";
 
 interface Props {
   register: UseFormRegister<NewsInput>;

@@ -4,15 +4,8 @@ import { useForm } from 'react-hook-form';
 import ButtonBack from '../components/ui/ButtonBack';
 import { Input } from '../components/ui/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { newsSchema } from '../schemas/new-schema';
+import { NewsInput, newsSchema } from '@allfunds-monorepo-app/shared';
 
-export type Inputs = {
-  title: string;
-  description: string;
-  author: string;
-  date: Date;
-  content: string;
-};
 
 export const UpdateNew = () => {
   const { id } = useParams();
@@ -21,12 +14,12 @@ export const UpdateNew = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Inputs>({
+  } = useForm<NewsInput>({
     resolver: zodResolver(newsSchema),
     // defaultValues,
   });
 
-  const onSubmit = (data: Inputs) => {};
+  const onSubmit = (data: NewsInput) => {};
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">

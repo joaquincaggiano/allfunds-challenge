@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import ButtonBack from '../components/ui/ButtonBack';
 import { Input } from '../components/ui/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { NewsInput, newsSchema } from '../schemas/new-schema';
 import { useNewMutation } from '../hooks/useNewMutation';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { NewsInput, newsSchema } from '@allfunds-monorepo-app/shared';
 
 export const CreateNew = () => {
   const { useNewCreateMutation } = useNewMutation();

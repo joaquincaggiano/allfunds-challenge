@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { New } from '../../interfaces/new.interface';
 import { Calendar, User, ArrowRight, Archive, Trash } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
 import { usePrefetchNew } from '../../hooks/usePrefetchNew';
@@ -7,6 +6,7 @@ import { useNew } from '../../hooks/useNew';
 import { ButtonIcon } from '../ui/ButtonIcon';
 import { Li } from '../ui/Li';
 import { ButtonLink } from '../ui/ButtonLink';
+import { New } from '@allfunds-monorepo-app/shared';
 
 interface CardProps {
   newData: New;

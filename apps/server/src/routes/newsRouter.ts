@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import newsController from '../controllers/newsController';
 import { z } from 'zod';
-import { archiveSchema, newsSchema, paramsSchema } from '../zod-schemas/newsSchema';
 import { validateRequest } from '../middlewares/validateRequest';
+import { paramsSchema, newsSchema, archiveSchema } from '@allfunds-monorepo-app/shared';
 
 const newsRouter = Router();
 

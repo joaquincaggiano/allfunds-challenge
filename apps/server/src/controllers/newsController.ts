@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import newsServices from '../services/newsServices';
-import { NewsInput } from '../zod-schemas/newsSchema';
+import { NewsInput } from '@allfunds-monorepo-app/shared';
 
 const newsController = {
   getNews: async (req: Request, res: Response, next: NextFunction) => {
