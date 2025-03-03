@@ -54,14 +54,16 @@ export const News = () => {
             <Archive size={24} className="text-indigo-600" />
           </div>
           <h3 className="text-xl font-medium text-gray-700 mb-2">
-            There are no articles
+            There are no articles {isAchieved ? 'archived' : 'active'}
           </h3>
-          <p className="text-gray-500">
-            Be the first to create an article clicking{' '}
-            <Link to="/news/write" className="text-indigo-600 underline">
-              here
-            </Link>
-          </p>
+          {!isAchieved && (
+            <p className="text-gray-500">
+              Be the first to create an article clicking{' '}
+              <Link to="/news/write" className="text-indigo-600 underline">
+                here
+              </Link>
+            </p>
+          )}
         </div>
       ) : (
         <>
