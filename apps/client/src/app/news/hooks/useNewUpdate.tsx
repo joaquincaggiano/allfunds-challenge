@@ -36,7 +36,6 @@ export const useNewUpdate = (id: string) => {
       queryClient.setQueryData(['new', id], data);
       queryClient.invalidateQueries({ queryKey: ['new', id] });
       queryClient.invalidateQueries({ queryKey: ['news'] });
-      toast.success('Noticia actualizada exitosamente');
     },
     onError: (error, newData, context) => {
       if (context?.previousNew) {
