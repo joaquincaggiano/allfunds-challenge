@@ -3,7 +3,7 @@ import { useNews } from '../hooks/useNews';
 import { Loading } from '../../shared/components/ui/Loading';
 import NewCard from '../components/card/NewCard';
 import TabNavigation from '../components/ui/navigation/TabNavigation';
-import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Pagination } from '../components/pagination/Pagination';
 import { Archive, PlusCircle } from 'lucide-react';
 import { ButtonLink } from '../components/ui/buttons/ButtonLink';
@@ -15,10 +15,14 @@ export const News = () => {
     filterKey: isAchieved,
   });
 
-  if (useNewsQuery.isLoading || useNewsQuery.isFetching || !useNewsQuery.data)
+  if (useNewsQuery.isLoading || useNewsQuery.isFetching )
     return <Loading />;
 
-  const news = useNewsQuery.data.news || [];
+  if (useNewsQuery.error) {
+    toast.error(useNewsQuery.error.message);
+  }
+
+  const news = useNewsQuery.data?.news || [];
 
   return (
     <div className="flex flex-col">
@@ -61,8 +65,6 @@ export const News = () => {
           />
         </>
       )}
-
-      <ToastContainer />
     </div>
   );
 };

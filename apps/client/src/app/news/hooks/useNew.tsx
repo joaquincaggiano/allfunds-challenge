@@ -6,6 +6,7 @@ export const useNew = ({ id }: { id: string }) => {
     queryKey: ['new', id],
     queryFn: () => getNewById(id),
     staleTime: 1000 * 60 * 60, // 1 hour
+    retry: false,
   });
 
   return {

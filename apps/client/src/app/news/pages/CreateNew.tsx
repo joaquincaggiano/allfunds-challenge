@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import ButtonBack from '../components/ui/buttons/ButtonBack';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { NewsInput, newsSchema } from '@allfunds-monorepo-app/shared';
 import { FormNew } from '../components/ui/form/FormNew';
 import { useNewCreate } from '../hooks/useNewCreate';
@@ -59,8 +59,6 @@ export const CreateNew = () => {
           isSubmitting={isSubmitting}
           onSubmit={onSubmit}
         />
-
-        <ToastContainer />
       </div>
     </div>
   );

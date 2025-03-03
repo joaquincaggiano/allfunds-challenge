@@ -6,14 +6,31 @@ import { formattedDate } from '../../../utils/formattedDate';
 import { Li } from '../components/ui/Li';
 import ButtonBack from '../components/ui/buttons/ButtonBack';
 import { ButtonIcon } from '../components/ui/buttons/ButtonIcon';
+import { toast } from 'react-toastify';
 
 export const NewById = () => {
   const { id } = useParams();
   const { useNewQuery } = useNew({ id: id as string });
   const navigate = useNavigate();
 
-  if (useNewQuery.isLoading || useNewQuery.isFetching || !useNewQuery.data)
-    return <Loading />;
+  if (useNewQuery.isLoading || useNewQuery.isFetching) return <Loading />;
+
+  if (useNewQuery.error) {
+    toast.error(useNewQuery.error.message);
+  }
+
+  if (!useNewQuery.data) {
+    return (
+      <div className="flex flex-col justify-center items-center py-12">
+        <div className="bg-indigo-100 p-3 rounded-full inline-flex mb-4">
+          <Archive size={24} className="text-indigo-600" />
+        </div>
+        <h3 className="text-xl font-medium text-gray-700 mb-2">
+          No se encontró el archivo
+        </h3>
+      </div>
+    );
+  }
 
   const { title, description, date, content, author, archiveDate } =
     useNewQuery.data;
