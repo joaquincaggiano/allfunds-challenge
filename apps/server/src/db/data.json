@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Sample News 1",
+    "description": "This is a sample news article description",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "https://example.com/image1.jpg",
+    "createdAt": "2024-03-14T12:00:00.000Z",
+    "archiveDate": null
+  },
+  {
+    "title": "Sample News 2",
+    "description": "Another sample news article description",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "https://example.com/image2.jpg",
+    "createdAt": "2024-03-14T13:00:00.000Z",
+    "archiveDate": null
+  }
+]

@@ -18,6 +18,7 @@ const newsController = {
       next(error);
     }
   },
+
   getNewById: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
@@ -31,6 +32,19 @@ const newsController = {
       next(error);
     }
   },
+
+  seedNews: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await newsServices.seedNews();
+
+      res.status(200).json({
+        message: 'News seeded successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   createNew: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const newsData = req.body as NewsInput;

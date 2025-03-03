@@ -28,7 +28,10 @@ const archiveValidationSchema = z.object({
 
 newsRouter.get('/', newsController.getNews);
 
+newsRouter.get('/seed', newsController.seedNews);
+
 newsRouter.get('/:id', validateRequest(idSchema), newsController.getNewById);
+
 
 newsRouter.post('/create', validateRequest(createSchema), newsController.createNew);
 
