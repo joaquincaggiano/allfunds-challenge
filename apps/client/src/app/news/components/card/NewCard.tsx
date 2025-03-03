@@ -1,26 +1,25 @@
 import { FC } from 'react';
 import { Calendar, User, ArrowRight, Archive, Trash } from 'lucide-react';
 import { formattedDate } from '../../../../utils/formattedDate';
-import { usePrefetchNew } from '../../hooks/usePrefetchNew';
-import { useNew } from '../../hooks/useNew';
 import { ButtonIcon } from '../ui/buttons/ButtonIcon';
 import { Li } from '../ui/Li';
 import { ButtonLink } from '../ui/buttons/ButtonLink';
 import { New } from '@allfunds-monorepo-app/shared';
+import { useNewUpdate } from '../../hooks/useNewUpdate';
+import { useNewDelete } from '../../hooks/useNewDelete';
+import { useNewPrefetch } from '../../hooks/useNewPrefetch';
 
 interface CardProps {
   newData: New;
 }
 
 const NewCard: FC<CardProps> = ({ newData }) => {
-  const { prefetchNew } = usePrefetchNew();
-  const { useNewUpdateArchiveMutation, useNewDeleteMutation } = useNew({
-    id: newData._id,
-  });
-
+  const { newPrefetchQuery } = useNewPrefetch();
+  const { patchNewArchiveMutation } = useNewUpdate(newData._id);
+  const { deleteNewMutation } = useNewDelete(newData._id);
   return (
     <article
-      onMouseEnter={() => prefetchNew(newData._id)}
+      onMouseEnter={() => newPrefetchQuery(newData._id)}
       className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px] border border-gray-100"
     >
       <div className="p-6 flex flex-col justify-between h-full">
@@ -36,14 +35,14 @@ const NewCard: FC<CardProps> = ({ newData }) => {
             {/* Botón de archivar o borrar articulo */}
             {newData.archiveDate ? (
               <ButtonIcon
-                onClick={() => useNewDeleteMutation.mutate()}
+                onClick={() => deleteNewMutation.mutate()}
                 icon={<Trash size={18} />}
                 title="Delete blog"
                 className="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-50"
               />
             ) : (
               <ButtonIcon
-                onClick={() => useNewUpdateArchiveMutation.mutate(true)}
+                onClick={() => patchNewArchiveMutation.mutate(true)}
                 icon={<Archive size={18} />}
                 title="Archive blog"
               />

@@ -1,10 +1,10 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { getNewById } from '../actions/news.actions';
 
-export const usePrefetchNew = () => {
+export const useNewPrefetch = () => {
   const queryClient = useQueryClient();
 
-  const prefetchNew = (id: string) => {
+  const newPrefetchQuery = (id: string) => {
     queryClient.prefetchQuery({
       queryKey: ['new', id],
       queryFn: () => getNewById(id),
@@ -12,5 +12,5 @@ export const usePrefetchNew = () => {
     });
   };
 
-  return { prefetchNew };
+  return { newPrefetchQuery };
 };

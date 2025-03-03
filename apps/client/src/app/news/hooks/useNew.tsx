@@ -1,51 +1,14 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  deleteNew,
-  getNewById,
-  updateNewArchiveDate,
-} from '../actions/news.actions';
-import { toast } from 'react-toastify';
+import { useQuery } from '@tanstack/react-query';
+import { getNewById } from '../actions/news.actions';
 
-interface Options {
-  id: string;
-}
-
-export const useNew = ({ id }: Options) => {
-  const queryClient = useQueryClient();
-
+export const useNew = ({ id }: { id: string }) => {
   const useNewQuery = useQuery({
     queryKey: ['new', id],
     queryFn: () => getNewById(id),
     staleTime: 1000 * 60 * 60, // 1 hour
   });
 
-  const useNewUpdateArchiveMutation = useMutation({
-    mutationFn: (isArchived: boolean) => updateNewArchiveDate(id, isArchived),
-    onSuccess: (dataResponse) => {
-      queryClient.setQueryData(['news', id], dataResponse.data);
-      queryClient.invalidateQueries({ queryKey: ['news'] });
-      // queryClient.refetchQueries({ queryKey: ['news'] });
-      // toast.success(dataResponse.message);
-    },
-    onError: (error) => {
-      toast.error(`Error: ${error.message}`);
-    },
-  });
-
-  const useNewDeleteMutation = useMutation({
-    mutationFn: () => deleteNew(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['news'] });
-      // toast.success(dataResponse.message);
-    },
-    onError: (error) => {
-      toast.error(`Error: ${error.message}`);
-    },
-  });
-
   return {
     useNewQuery,
-    useNewUpdateArchiveMutation,
-    useNewDeleteMutation,
   };
 };

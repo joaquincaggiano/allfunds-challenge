@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form';
 import ButtonBack from '../components/ui/buttons/ButtonBack';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNewMutation } from '../hooks/useNewMutation';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { NewsInput, newsSchema } from '@allfunds-monorepo-app/shared';
 import { FormNew } from '../components/ui/form/FormNew';
-
+import { useNewCreate } from '../hooks/useNewCreate';
 export const CreateNew = () => {
-  const { useNewCreateMutation } = useNewMutation();
+  const { createNewMutation } = useNewCreate();
   const navigate = useNavigate();
 
   const {
@@ -29,7 +28,7 @@ export const CreateNew = () => {
 
   const onSubmit = async (data: NewsInput) => {
     try {
-      await useNewCreateMutation.mutateAsync(data);
+      await createNewMutation.mutateAsync(data);
       navigate('/');
     } catch (error: unknown) {
       if (error instanceof Error) {

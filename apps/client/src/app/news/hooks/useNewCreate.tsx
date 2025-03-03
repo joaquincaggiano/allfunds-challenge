@@ -3,10 +3,10 @@ import { createNew } from '../actions/news.actions';
 import mongoose from 'mongoose';
 import { New, NewsInput } from '@allfunds-monorepo-app/shared';
 
-export const useNewMutation = () => {
+export const useNewCreate = () => {
   const queryClient = useQueryClient();
 
-  const useNewCreateMutation = useMutation({
+  const createNewMutation = useMutation({
     mutationFn: (data: NewsInput) => createNew(data),
 
     onMutate: async (data) => {
@@ -68,5 +68,5 @@ export const useNewMutation = () => {
     },
   });
 
-  return { useNewCreateMutation };
+  return { createNewMutation };
 };
