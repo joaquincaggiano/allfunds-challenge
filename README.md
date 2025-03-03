@@ -35,7 +35,10 @@ This is a monorepo application built with Nx, containing both frontend and backe
 npm install
 ```
 
-2. Start the development servers:
+2. Create environment file:
+Create a `.env` file in `apps/server/src/config` with your environment variables using `.env.template` file from the reference.
+
+3. Start the development servers:
 
 For frontend:
 ```bash
@@ -47,11 +50,12 @@ For backend:
 npm run start:server
 ```
 
-### Development Tools
-- ESLint for code linting
-- Prettier for code formatting
-- Jest for testing
-- Nx for monorepo management
+4. Seed the database:
+Once the server is running, make a GET request to:
+```
+http://localhost:3000/api/news/seed
+```
+This will populate the database with initial data.
 
 ### Scripts
 - `npm run start:client`: Start the frontend development server
@@ -62,12 +66,11 @@ npm run start:server
 ## Español
 
 ### Descripción General
-Esta es una aplicación monorepo construida con Nx, que contiene aplicaciones tanto frontend como backend. El proyecto utiliza tecnologías web modernas y sigue las mejores prácticas de desarrollo.
+Esta es una aplicación monorepo construida con Nx, que contiene aplicaciones tanto frontend como backend.
 
 ### Estructura del Proyecto
 - `apps/client`: Aplicación frontend en React
 - `apps/server`: Aplicación backend en Express.js
-- `apps/server-e2e`: Pruebas end-to-end para el servidor
 
 ### Tecnologías
 #### Frontend
@@ -92,7 +95,10 @@ Esta es una aplicación monorepo construida con Nx, que contiene aplicaciones ta
 npm install
 ```
 
-2. Iniciar los servidores de desarrollo:
+2. Crear archivo de entorno:
+Crea un archivo `.env` en `apps/server/src/config` con tus variables de entorno utilizando el `.env.template` de referencia.
+
+3. Iniciar los servidores de desarrollo:
 
 Para el frontend:
 ```bash
@@ -104,11 +110,12 @@ Para el backend:
 npm run start:server
 ```
 
-### Herramientas de Desarrollo
-- ESLint para linting de código
-- Prettier para formateo de código
-- Jest para testing
-- Nx para gestión del monorepo
+4. Poblar la base de datos:
+Una vez que el servidor esté corriendo, realiza una petición GET a:
+```
+http://localhost:3000/api/news/seed
+```
+Esto poblará la base de datos con datos iniciales.
 
 ### Scripts
 - `npm run start:client`: Inicia el servidor de desarrollo frontend
