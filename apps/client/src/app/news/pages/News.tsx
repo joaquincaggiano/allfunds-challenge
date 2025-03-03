@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNews } from '../hooks/useNews';
 import { Loading } from '../../shared/components/ui/Loading';
 import NewCard from '../components/card/NewCard';
@@ -15,6 +15,14 @@ export const News = () => {
   const { useNewsQuery, page, nextPage, prevPage } = useNews({
     filterKey: isAchieved,
   });
+
+  useEffect(() => {
+    if (!useNewsQuery.data) return;
+    
+    if (useNewsQuery.data?.news.length === 0 && page > 1) {
+      prevPage();
+    }
+  }, [useNewsQuery.data?.news, page]);
 
   if (useNewsQuery.isLoading || useNewsQuery.isFetching) return <Loading />;
 
