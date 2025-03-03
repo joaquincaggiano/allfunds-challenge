@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { Pagination } from '../components/pagination/Pagination';
 import { Archive, PlusCircle } from 'lucide-react';
 import { ButtonLink } from '../components/ui/buttons/ButtonLink';
+import { Link } from 'react-router-dom';
 
 export const News = () => {
   const [isAchieved, setIsAchieved] = useState(false);
@@ -15,8 +16,7 @@ export const News = () => {
     filterKey: isAchieved,
   });
 
-  if (useNewsQuery.isLoading || useNewsQuery.isFetching )
-    return <Loading />;
+  if (useNewsQuery.isLoading || useNewsQuery.isFetching) return <Loading />;
 
   if (useNewsQuery.error) {
     toast.error(useNewsQuery.error.message);
@@ -46,8 +46,14 @@ export const News = () => {
             <Archive size={24} className="text-indigo-600" />
           </div>
           <h3 className="text-xl font-medium text-gray-700 mb-2">
-            No hay artículos
+            There are no articles
           </h3>
+          <p className="text-gray-500">
+            Be the first to create an article clicking{' '}
+            <Link to="/news/write" className="text-indigo-600 underline">
+              here
+            </Link>
+          </p>
         </div>
       ) : (
         <>
