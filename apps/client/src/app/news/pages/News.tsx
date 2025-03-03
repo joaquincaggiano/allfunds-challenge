@@ -17,8 +17,8 @@ export const News = () => {
   });
 
   useEffect(() => {
-    if (!useNewsQuery.data) return;
-    
+    if (!useNewsQuery.data?.news) return;
+
     if (useNewsQuery.data?.news.length === 0 && page > 1) {
       prevPage();
     }

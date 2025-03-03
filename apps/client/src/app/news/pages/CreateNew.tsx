@@ -16,14 +16,13 @@ export const CreateNew = () => {
     formState: { errors, isSubmitting },
   } = useForm<NewsInput>({
     resolver: zodResolver(newsSchema),
-    // defaultValues: {
-    //   title: 'Artículo de prueba',
-    //   description: 'Esta es una descripción de prueba para el artículo',
-    //   author: 'Autor de prueba',
-    //   date: new Date(),
-    //   content:
-    //     'Este es un contenido de prueba para el artículo que cumple con los requisitos mínimos',
-    // },
+    defaultValues: {
+      title: 'Artículo de prueba',
+      description: 'Esta es una descripción de prueba para el artículo',
+      author: 'Autor de prueba',
+      content:
+        'Este es un contenido de prueba para el artículo que cumple con los requisitos mínimos',
+    },
   });
 
   const onSubmit = async (data: NewsInput) => {
