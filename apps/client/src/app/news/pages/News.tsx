@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useNews } from '../hooks/useNews';
 import { Loading } from '../../shared/components/ui/Loading';
 import NewCard from '../components/card/NewCard';
-import TabNavigation from '../components/ui/TabNavigation';
+import TabNavigation from '../components/ui/navigation/TabNavigation';
 import { ToastContainer } from 'react-toastify';
 import { Pagination } from '../components/pagination/Pagination';
 import { Archive, PlusCircle } from 'lucide-react';
-import { ButtonLink } from '../components/ui/ButtonLink';
+import { ButtonLink } from '../components/ui/buttons/ButtonLink';
 
 export const News = () => {
   const [isAchieved, setIsAchieved] = useState(false);
@@ -25,7 +25,7 @@ export const News = () => {
       <ButtonLink
         to="/news/write"
         icon={<PlusCircle size={18} />}
-        label="Nuevo artículo"
+        label="New article"
         className="self-end mb-5"
       />
 

@@ -33,7 +33,7 @@ newsRouter.get('/:id', validateRequest(idSchema), newsController.getNewById);
 newsRouter.post('/create', validateRequest(createSchema), newsController.createNew);
 
 newsRouter.put(
-  '/:id',
+  '/:id/update',
   validateRequest(idSchema),
   validateRequest(updateSchema),
   newsController.updateNew

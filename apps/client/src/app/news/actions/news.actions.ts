@@ -37,6 +37,15 @@ export const createNew = async (newData: NewsInput): Promise<NewResponse> => {
   };
 };
 
+export const updateNew = async (id: string, newData: NewsInput): Promise<NewResponse> => {
+  const { data } = await newsApi.put<NewResponse>(`/news/${id}/update`, newData);
+
+  return {
+    data: data.data,
+    message: data.message,
+  };
+};
+
 export const updateNewArchiveDate = async (
   id: string,
   isArchived: boolean

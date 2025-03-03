@@ -4,8 +4,8 @@ import { Loading } from '../../shared/components/ui/Loading';
 import { Archive, Calendar, PencilLine, User } from 'lucide-react';
 import { formattedDate } from '../../../utils/formattedDate';
 import { Li } from '../components/ui/Li';
-import ButtonBack from '../components/ui/ButtonBack';
-import { ButtonIcon } from '../components/ui/ButtonIcon';
+import ButtonBack from '../components/ui/buttons/ButtonBack';
+import { ButtonIcon } from '../components/ui/buttons/ButtonIcon';
 
 export const NewById = () => {
   const { id } = useParams();

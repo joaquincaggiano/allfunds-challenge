@@ -1,4 +1,4 @@
-import { NewsInput, NewsResponse } from '@allfunds-monorepo-app/shared';
+import { NewsInput } from '@allfunds-monorepo-app/shared';
 import CustomError from '../exceptions/customError';
 import News from '../models/news';
 
