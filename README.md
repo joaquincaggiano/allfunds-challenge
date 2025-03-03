@@ -1,82 +1,115 @@
-# AllfundsMonorepoApp
+# Allfunds Monorepo App
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+[English](#english) | [Español](#español)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## English
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Overview
+This is a monorepo application built with Nx, containing both frontend and backend applications. The project uses modern web technologies and follows best practices for development.
 
-## Finish your CI setup
+### Project Structure
+- `apps/client`: React frontend application
+- `apps/server`: Express.js backend application
+- `apps/server-e2e`: End-to-end tests for the server
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/zTypPoQ6k4)
+### Technologies
+#### Frontend
+- React 19.0.0
+- React Router DOM
+- React Query (Tanstack Query)
+- React Hook Form
+- Tailwind CSS
+- Vite
+- TypeScript
 
+#### Backend
+- Express.js
+- MongoDB with Mongoose
+- CORS
+- TypeScript
 
-## Run tasks
+### Getting Started
 
-To run the dev server for your app, use:
-
-```sh
-npx nx serve server
+1. Install dependencies:
+```bash
+npm install
 ```
 
-To create a production bundle:
+2. Start the development servers:
 
-```sh
-npx nx build server
+For frontend:
+```bash
+npm run start:client
 ```
 
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project server
+For backend:
+```bash
+npm run start:server
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### Development Tools
+- ESLint for code linting
+- Prettier for code formatting
+- Jest for testing
+- Nx for monorepo management
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Scripts
+- `npm run start:client`: Start the frontend development server
+- `npm run start:server`: Start the backend development server
 
-## Add new projects
+---
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## Español
 
-Use the plugin's generator to create new projects.
+### Descripción General
+Esta es una aplicación monorepo construida con Nx, que contiene aplicaciones tanto frontend como backend. El proyecto utiliza tecnologías web modernas y sigue las mejores prácticas de desarrollo.
 
-To generate a new application, use:
+### Estructura del Proyecto
+- `apps/client`: Aplicación frontend en React
+- `apps/server`: Aplicación backend en Express.js
+- `apps/server-e2e`: Pruebas end-to-end para el servidor
 
-```sh
-npx nx g @nx/node:app demo
+### Tecnologías
+#### Frontend
+- React 19.0.0
+- React Router DOM
+- React Query (Tanstack Query)
+- React Hook Form
+- Tailwind CSS
+- Vite
+- TypeScript
+
+#### Backend
+- Express.js
+- MongoDB con Mongoose
+- CORS
+- TypeScript
+
+### Comenzando
+
+1. Instalar dependencias:
+```bash
+npm install
 ```
 
-To generate a new library, use:
+2. Iniciar los servidores de desarrollo:
 
-```sh
-npx nx g @nx/node:lib mylib
+Para el frontend:
+```bash
+npm run start:client
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+Para el backend:
+```bash
+npm run start:server
+```
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Herramientas de Desarrollo
+- ESLint para linting de código
+- Prettier para formateo de código
+- Jest para testing
+- Nx para gestión del monorepo
 
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Scripts
+- `npm run start:client`: Inicia el servidor de desarrollo frontend
+- `npm run start:server`: Inicia el servidor de desarrollo backend
