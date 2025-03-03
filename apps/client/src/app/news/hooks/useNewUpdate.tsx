@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getNewById, updateNew, updateNewArchiveDate } from '../actions/news.actions';
-import { NewsInput } from '@allfunds-monorepo-app/shared';
+import { NewsInput, New } from '@allfunds-monorepo-app/shared';
 import { toast } from 'react-toastify';
 
 export const useNewUpdate = (id: string) => {
@@ -20,10 +20,28 @@ export const useNewUpdate = (id: string) => {
 
   const updateNewMutation = useMutation({
     mutationFn: (data: NewsInput) => updateNew(id, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['new', id] });
+    onMutate: async (newData) => {
+      await queryClient.cancelQueries({ queryKey: ['new', id] });
+
+      const previousNew = queryClient.getQueryData(['new', id]) as New;
+
+      queryClient.setQueryData(['new', id], {
+        ...previousNew,
+        ...newData,
+      } as New);
+
+      return { previousNew };
     },
-    onError: (error) => {
+    onSuccess: (data) => {
+      queryClient.setQueryData(['new', id], data);
+      queryClient.invalidateQueries({ queryKey: ['new', id] });
+      queryClient.invalidateQueries({ queryKey: ['news'] });
+      toast.success('Noticia actualizada exitosamente');
+    },
+    onError: (error, newData, context) => {
+      if (context?.previousNew) {
+        queryClient.setQueryData(['new', id], context.previousNew);
+      }
       toast.error(error.message);
     },
   });
