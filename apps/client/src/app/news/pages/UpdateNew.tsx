@@ -7,7 +7,7 @@ import { NewsInput, newsSchema } from '@allfunds-monorepo-app/shared';
 import { useNewUpdate } from '../hooks/useNewUpdate';
 import { Loading } from '../../shared/components/ui/Loading';
 import { FormNew } from '../components/ui/form/FormNew';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 export const UpdateNew = () => {
   const { id } = useParams();
@@ -66,6 +66,8 @@ export const UpdateNew = () => {
           isSubmitting={isSubmitting}
           onSubmit={onSubmit}
         />
+
+        <ToastContainer />
       </div>
     </div>
   );

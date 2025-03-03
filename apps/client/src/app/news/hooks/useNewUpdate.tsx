@@ -41,7 +41,6 @@ export const useNewUpdate = (id: string) => {
       if (context?.previousNew) {
         queryClient.setQueryData(['new', id], context.previousNew);
       }
-      toast.error(error.message);
     },
   });
 
