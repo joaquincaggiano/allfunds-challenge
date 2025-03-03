@@ -14,18 +14,18 @@ export const newsSchema = z.object({
   title: z
     .string()
     .trim()
-    .min(3, 'El título debe tener al menos 3 caracteres')
-    .max(50, 'El título no puede exceder 50 caracteres'),
+    .min(3, 'Title must be at least 3 characters')
+    .max(50, 'Title cannot exceed 50 characters'),
   description: z
     .string()
     .trim()
-    .min(10, 'La descripción debe tener al menos 10 caracteres'),
+    .min(10, 'Description must be at least 10 characters'),
   date: z.coerce.date(),
   content: z
     .string()
     .trim()
-    .min(10, 'El contenido debe tener al menos 10 caracteres'),
-  author: z.string().trim().min(3, 'El autor debe tener al menos 3 caracteres'),
+    .min(10, 'Content must be at least 10 characters'),
+  author: z.string().trim().min(3, 'Author must be at least 3 characters'),
 });
 
 export const archiveSchema = z.object({
