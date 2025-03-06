@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getNews } from '../actions/news.actions';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 
 interface UseNewsOptions {
   filterKey?: boolean;
