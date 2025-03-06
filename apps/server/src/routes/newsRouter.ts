@@ -8,8 +8,8 @@ const newsRouter = Router();
 
 const createSchema = z.object({
   body: newsSchema,
-  query: z.object({}).optional(),
-  params: z.object({}).optional(),
+  // query: z.object({}).optional(),
+  // params: z.object({}).optional(),
 });
 
 const updateSchema = z.object({
